@@ -1,9 +1,9 @@
 {
   "manifest_version": 3,
   "name": "FocusRPG",
-  "version": "3.1",
-  "description": "Gamified productivity tracker with XP, levels, streaks, music, and insights.",
-  "permissions": ["tabs", "storage", "idle", "history"],
+  "version": "4.0",
+  "description": "Turn your browsing into a game. XP, streaks, focus, and fun.",
+  "permissions": ["tabs", "storage", "idle"],
   "background": {
     "service_worker": "background.js"
   },
