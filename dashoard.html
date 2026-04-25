@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>FocusRPG</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+  <h1>🎮 FocusRPG</h1>
+
+  <!-- PROFILE -->
+  <div class="card">
+    <div id="profile"></div>
+  </div>
+
+  <!-- STATS -->
+  <div class="card">
+    <h3>📊 Today</h3>
+    <div id="stats"></div>
+  </div>
+
+  <!-- BADGES -->
+  <div class="card">
+    <h3>🏅 Badges</h3>
+    <div id="badges">Loading...</div>
+  </div>
+
+  <!-- QUESTS -->
+  <div class="card">
+    <h3>🎯 Daily Quests</h3>
+    <div id="quests">Loading...</div>
+  </div>
+
+  <!-- ACTIVITY TABLE -->
+  <div class="card">
+    <h3>🌐 Activity Breakdown</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Site</th>
+          <th>Time</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody id="table"></tbody>
+    </table>
+  </div>
+
+  <!-- MOTIVATION -->
+  <div class="card center">
+    <div id="motivation">Loading insight...</div>
+  </div>
+
+  <!-- PRO SECTION -->
+  <div class="card">
+    <h3>🚀 Pro Features</h3>
+    
+    <button id="proBtn">🔒 Unlock Pro</button>
+
+    <div style="margin-top:10px;">
+      <input id="proCode" placeholder="Enter Pro Code" />
+      <button id="activatePro">Activate</button>
+    </div>
+  </div>
+
+  <!-- SHARE -->
+  <button id="shareBtn">📤 Share Report</button>
+
+  <!-- HIDDEN CANVAS -->
+  <canvas id="shareCanvas" width="600" height="800" style="display:none;"></canvas>
+
+</div>
+
+<!-- SCRIPTS -->
+<script src="config.js"></script>
+<script src="dashboard.js"></script>
+
+</body>
+</html>
