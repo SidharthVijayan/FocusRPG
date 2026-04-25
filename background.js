@@ -11,7 +11,6 @@ function getDomain(url) {
 async function logTime() {
   let duration = Date.now() - startTime;
   let domain = getDomain(activeTab?.url || "");
-
   let category = getCategory(domain);
 
   let data = await chrome.storage.local.get(["stats"]);
