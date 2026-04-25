@@ -1,4 +1,3 @@
-
 // 🔢 HELPERS
 function msToMin(ms) {
   return Math.round(ms / 60000);
@@ -69,7 +68,7 @@ function getMotivation(score) {
   return "🤡 Chaos detected.";
 }
 
-// 🔥 STREAK SYSTEM (CORRECT)
+// 🔥 STREAK SYSTEM
 function isSameDay(d1, d2) {
   return new Date(d1).toDateString() === new Date(d2).toDateString();
 }
@@ -158,15 +157,15 @@ async function load() {
     DAYS
   `;
 
-  // 🎭 PROFILE + XP BAR
+  // 🎭 PROFILE (CLEAN UI FIX APPLIED)
   let xpProgress = (xp % 500) / 500 * 100;
 
   document.getElementById("profile").innerHTML = `
-    <div style="font-size:20px;">${personality.title}</div>
-    <div style="color:#aaa">${personality.desc}</div>
+    <div class="profile-title">${personality.title}</div>
+    <div class="profile-sub">${personality.desc}</div>
 
     <div style="margin-top:10px">
-      <strong>Level ${level}</strong> — ${title}
+      Level ${level} — ${title}
     </div>
 
     <div>XP: ${xp}</div>
@@ -195,9 +194,7 @@ Reel Khan: ${social} min
   document.getElementById("motivation").innerText = getMotivation(score);
 
   // 📤 STORE FOR SHARE
-  window.currentData = {
-    level, title, score, streak, badges
-  };
+  window.currentData = { level, title, score, streak, badges };
 }
 
 // 📤 SHARE SYSTEM
