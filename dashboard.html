@@ -7,41 +7,60 @@
 </head>
 <body>
 
-<div class="container">
+<div class="app">
 
-  <h1>🎮 FocusRPG</h1>
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div class="logo">🎮 FocusRPG</div>
+    <div class="top-stats">
+      <div id="levelBox"></div>
+      <div id="xpBox"></div>
+      <div id="streakMini"></div>
+    </div>
+  </header>
 
-  <!-- 🔥 STREAK HERO (ADDED - IMPORTANT) -->
-  <div class="card streak-card">
-    <div id="streakBox">🔥 Loading streak...</div>
-  </div>
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <div id="avatar" class="avatar"></div>
+      <div id="motivation" class="motivation"></div>
+    </div>
 
-  <!-- 🎭 PROFILE -->
-  <div class="card profile-card">
-    <div id="profile"></div>
-  </div>
+    <div class="xp-container">
+      <div class="xp-label">XP Progress</div>
+      <div class="xp-bar">
+        <div id="xpFill" class="xp-fill"></div>
+      </div>
+    </div>
+  </section>
 
-  <!-- 📊 STATS -->
-  <div class="card">
-    <h3>📊 Today</h3>
-    <div id="stats"></div>
-  </div>
+  <!-- GRID -->
+  <main class="grid">
 
-  <!-- 🏅 BADGES -->
-  <div class="card">
-    <h3>🏅 Badges</h3>
-    <div id="badges">Loading...</div>
-  </div>
+    <div class="panel">
+      <h3>📊 Today</h3>
+      <div id="stats"></div>
+    </div>
 
-  <!-- 🎯 QUESTS -->
-  <div class="card">
-    <h3>🎯 Daily Quests</h3>
-    <div id="quests">Loading...</div>
-  </div>
+    <div class="panel">
+      <h3>🏅 Badges</h3>
+      <div id="badges"></div>
+    </div>
 
-  <!-- 🌐 ACTIVITY TABLE -->
-  <div class="card">
-    <h3>🌐 Activity Breakdown</h3>
+    <div class="panel">
+      <h3>🎯 Quests</h3>
+      <div id="quests"></div>
+    </div>
+
+    <div class="panel streak-panel">
+      <div id="streakBox"></div>
+    </div>
+
+  </main>
+
+  <!-- TABLE -->
+  <section class="table-section">
+    <h3>🌐 Activity</h3>
     <table>
       <thead>
         <tr>
@@ -52,34 +71,17 @@
       </thead>
       <tbody id="table"></tbody>
     </table>
+  </section>
+
+  <!-- SHARE -->
+  <div class="share">
+    <button id="shareBtn">📤 Share Report</button>
   </div>
 
-  <!-- 💬 MOTIVATION -->
-  <div class="card center">
-    <div id="motivation">Loading insight...</div>
-  </div>
-
-  <!-- 🚀 PRO -->
-  <div class="card">
-    <h3>🚀 Pro Features</h3>
-    
-    <button id="proBtn">🔒 Unlock Pro</button>
-
-    <div style="margin-top:10px;">
-      <input id="proCode" placeholder="Enter Pro Code" />
-      <button id="activatePro">Activate</button>
-    </div>
-  </div>
-
-  <!-- 📤 SHARE -->
-  <button id="shareBtn">📤 Share Report</button>
-
-  <!-- 🎨 CANVAS -->
   <canvas id="shareCanvas" width="600" height="800" style="display:none;"></canvas>
 
 </div>
 
-<!-- SCRIPTS -->
 <script src="config.js"></script>
 <script src="dashboard.js"></script>
 
