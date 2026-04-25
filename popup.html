@@ -1,21 +1,37 @@
 <!DOCTYPE html>
 <html>
-<head><link rel="stylesheet" href="style.css"></head>
+<head>
+  <meta charset="UTF-8">
+  <title>FocusRPG</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 <body>
 
-<h2>🎮 FocusRPG</h2>
+  <h2>🎮 FocusRPG</h2>
 
-<div id="timer">25:00</div>
+  <!-- TIMER -->
+  <div id="timer">25:00</div>
 
-<button id="start">Start</button>
-<button id="reset">Reset</button>
+  <!-- CONTROLS -->
+  <button id="start">Start</button>
+  <button id="reset">Reset</button>
 
-<label><input type="checkbox" id="soundToggle"> Sound</label>
+  <!-- SOUND TOGGLE -->
+  <label style="display:block; margin-top:10px;">
+    <input type="checkbox" id="soundToggle"> 🔊 Sound Effects
+  </label>
 
-<button id="music">🎧 Focus Music</button>
+  <!-- MUSIC SECTION -->
+  <div style="margin-top:15px;">
+    <p style="font-size:12px; color:#aaa;">🎧 Live Focus Radio</p>
+    <button id="music">Play / Pause</button>
+  </div>
 
-<p id="status"></p>
+  <!-- STATUS -->
+  <p id="status" style="margin-top:10px;"></p>
 
-<script src="popup.js"></script>
+  <!-- SCRIPT -->
+  <script src="popup.js"></script>
+
 </body>
 </html>
