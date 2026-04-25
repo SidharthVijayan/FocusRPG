@@ -8,11 +8,11 @@ function getDomain(url) {
   catch { return "unknown"; }
 }
 
-async function logTime(isIdle = false) {
+async function logTime() {
   let duration = Date.now() - startTime;
-  let domain = isIdle ? "idle" : getDomain(activeTab?.url || "");
+  let domain = getDomain(activeTab?.url || "");
 
-  let category = getCategory(domain, isIdle);
+  let category = getCategory(domain);
 
   let data = await chrome.storage.local.get(["stats"]);
   let stats = data.stats || {};
@@ -21,6 +21,7 @@ async function logTime(isIdle = false) {
   stats[domain].time += duration;
 
   await chrome.storage.local.set({ stats });
+
   startTime = Date.now();
 }
 
@@ -33,13 +34,5 @@ chrome.tabs.onUpdated.addListener(async (_, change, tab) => {
   if (tab.active && change.status === "complete") {
     await logTime();
     activeTab = tab;
-  }
-});
-
-chrome.idle.onStateChanged.addListener(async (state) => {
-  if (state === "idle" || state === "locked") {
-    await logTime(true);
-  } else {
-    startTime = Date.now();
   }
 });
