@@ -1,70 +1,52 @@
-let time = 1500;
-let interval;
+// 🎧 MULTI-STREAM RADIO SYSTEM (NO LOCAL FILES)
 
-let sound = new Audio("assets/levelup.mp3");
+let music = null;
+let currentStreamIndex = 0;
 
-// Hybrid music: fallback + radio
-let localMusic = new Audio("assets/focus.mp3");
-localMusic.loop = true;
+// Multiple fallback streams
+const STREAMS = [
+  "https://ice1.somafm.com/groovesalad-128-mp3",   // ambient
+  "https://ice2.somafm.com/dronezone-128-mp3",     // deep focus
+  "https://ice4.somafm.com/u80s-128-mp3"           // chill alt
+];
 
-let radioStream = "https://ice1.somafm.com/groovesalad-128-mp3";
-let streamMusic = new Audio(radioStream);
+async function playStream(index = 0) {
+  if (index >= STREAMS.length) {
+    alert("⚠️ All streams failed. Check connection.");
+    return;
+  }
 
-let usingStream = false;
+  console.log("Trying stream:", STREAMS[index]);
 
-function update() {
-  let m = Math.floor(time / 60);
-  let s = time % 60;
-  timer.innerText = `${m}:${s.toString().padStart(2,"0")}`;
+  music = new Audio(STREAMS[index]);
+  music.crossOrigin = "anonymous";
+
+  music.onerror = () => {
+    console.log("Stream failed → trying next");
+    playStream(index + 1);
+  };
+
+  try {
+    await music.play();
+    currentStreamIndex = index;
+  } catch (e) {
+    console.log("Playback error → trying next");
+    playStream(index + 1);
+  }
 }
 
-start.onclick = () => {
-  if (interval) return;
-
-  interval = setInterval(async () => {
-    time--;
-    update();
-
-    if (time <= 0) {
-      clearInterval(interval);
-
-      let data = await chrome.storage.local.get(["xp","pomodoro"]);
-      let xp = (data.xp||0)+50;
-      let pomodoro = (data.pomodoro||0)+1;
-
-      await chrome.storage.local.set({ xp, pomodoro });
-
-      let s = await chrome.storage.local.get(["sound"]);
-      if (s.sound) sound.play();
-
-      status.innerText = "🔥 +50 XP";
-    }
-  },1000);
-};
-
-reset.onclick = () => {
-  clearInterval(interval);
-  time=1500;
-  update();
-};
-
-music.onclick = async () => {
+// 🎮 Button logic
+document.getElementById("music").onclick = async () => {
   let data = await chrome.storage.local.get(["isPro"]);
-  if (!data.isPro) return alert("🔒 Pro Feature");
 
-  let current = usingStream ? streamMusic : localMusic;
+  if (!data.isPro) {
+    alert("🔒 Pro Feature");
+    return;
+  }
 
-  if (current.paused) {
-    try {
-      await current.play();
-    } catch {
-      // fallback if stream fails
-      usingStream = false;
-      localMusic.play();
-    }
+  if (!music || music.paused) {
+    playStream(0);
   } else {
-    current.pause();
+    music.pause();
   }
 };
-
-update();
