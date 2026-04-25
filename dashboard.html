@@ -9,58 +9,64 @@
 
 <div class="app">
 
-  <!-- TOPBAR -->
+  <!-- 🔝 TOP BAR -->
   <header class="topbar">
     <div class="logo">🎮 FocusRPG</div>
+
     <div class="top-stats">
-      <div id="levelBox"></div>
-      <div id="xpBox"></div>
-      <div id="streakMini"></div>
+      <div id="levelBox">Level 0</div>
+      <div id="xpBox">XP 0</div>
+      <div id="streakMini">🔥 0</div>
     </div>
   </header>
 
-  <!-- HERO -->
+  <!-- 🧠 HERO SECTION -->
   <section class="hero">
-    <div>
-      <div id="avatar" class="avatar"></div>
-      <div id="motivation" class="motivation"></div>
+
+    <div class="hero-left">
+      <div id="avatar" class="avatar">🙂 Loading...</div>
+      <div id="motivation" class="motivation">Loading insight...</div>
     </div>
 
-    <div class="xp-container">
-      <div class="xp-label">XP Progress</div>
-      <div class="xp-bar">
-        <div id="xpFill" class="xp-fill"></div>
+    <div class="hero-right">
+      <div class="xp-container">
+        <div class="xp-label">XP Progress</div>
+        <div class="xp-bar">
+          <div id="xpFill" class="xp-fill"></div>
+        </div>
       </div>
     </div>
+
   </section>
 
-  <!-- GRID -->
+  <!-- 📊 MAIN GRID -->
   <main class="grid">
 
     <div class="panel">
       <h3>📊 Today</h3>
-      <div id="stats"></div>
+      <div id="stats">Loading...</div>
     </div>
 
     <div class="panel">
       <h3>🏅 Badges</h3>
-      <div id="badges"></div>
+      <div id="badges">Loading...</div>
     </div>
 
     <div class="panel">
       <h3>🎯 Quests</h3>
-      <div id="quests"></div>
+      <div id="quests">Loading...</div>
     </div>
 
     <div class="panel streak-panel">
-      <div id="streakBox"></div>
+      <div id="streakBox">🔥 Loading...</div>
     </div>
 
   </main>
 
-  <!-- TABLE -->
+  <!-- 🌐 ACTIVITY TABLE -->
   <section class="table-section">
-    <h3>🌐 Activity</h3>
+    <h3>🌐 Activity Breakdown</h3>
+
     <table>
       <thead>
         <tr>
@@ -69,30 +75,33 @@
           <th>Type</th>
         </tr>
       </thead>
+
       <tbody id="table"></tbody>
     </table>
   </section>
 
-  <!-- SHARE -->
+  <!-- 📤 SHARE -->
   <div class="share">
     <button id="shareBtn">📤 Share Report</button>
   </div>
 
+  <!-- 🎨 HIDDEN CANVAS (FOR SHARE IMAGE) -->
   <canvas id="shareCanvas" width="600" height="800" style="display:none;"></canvas>
 
 </div>
 
-<!-- LEVEL UP POPUP -->
+<!-- 🔥 LEVEL UP POPUP -->
 <div id="levelUpPopup" class="level-popup hidden">
   <div class="popup-box">
     <div class="popup-title">🔥 LEVEL UP!</div>
-    <div id="levelText"></div>
+    <div id="levelText">Level Up</div>
   </div>
 </div>
 
-<!-- CONFETTI -->
+<!-- 🎉 CONFETTI CANVAS -->
 <canvas id="confettiCanvas"></canvas>
 
+<!-- SCRIPTS -->
 <script src="config.js"></script>
 <script src="dashboard.js"></script>
 
